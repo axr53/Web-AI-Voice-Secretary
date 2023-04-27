@@ -17,20 +17,11 @@ startRecordBtn.addEventListener("click", () => {
     .then((stream) => {
       // MediaRecorder 객체를 생성하고 시작합니다.
       mediaRecorder = new MediaRecorder(stream);
-      mediaRecorder.start(1000); // 1초의 타임 슬라이스를 추가합니다.
+      mediaRecorder.start();
 
       // 버튼 상태를 업데이트합니다.
       startRecordBtn.disabled = true;
       stopRecordBtn.disabled = false;
-
-      // 20초 후에 녹음을 자동으로 중지합니다.
-      setTimeout(() => {
-        if (mediaRecorder) {
-          mediaRecorder.stop();
-          startRecordBtn.disabled = false;
-          stopRecordBtn.disabled = true;
-        }
-      }, 20000);
 
       // 데이터가 사용 가능한 경우 오디오 청크를 저장합니다.
       mediaRecorder.addEventListener("dataavailable", (event) => {
@@ -92,7 +83,7 @@ async function processAudio(base64data) {
 async function speechToText(base64audio) {
   // Google Speech-to-Text API 호출을 위한 설정
   // 여기에 Google Speech-to-Text API 키를 입력하세요.
-  const response = await fetch("input your API Key", {
+  const response = await fetch("https://speech.googleapis.com/v1/speech:recognize?key=YOUR_GOOGLE_API_KEY", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -119,7 +110,7 @@ async function speechToText(base64audio) {
 async function fetchGptResponse(inputText) {
   // OpenAI GPT-3 API 호출을 위한 설정
   // 여기에 OpenAI GPT-3 API 키를 입력하세요.
-  const response = await fetch("input your API Key", {
+  const response = await fetch("https://api.openai.com/v1/engines/davinci-codex/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -144,7 +135,7 @@ async function fetchGptResponse(inputText) {
 async function textToSpeech(text) {
   // Google Text-to-Speech API 호출을 위한 설정
   // 여기에 Google Text-to-Speech API 키를 입력하세요.
-  const response = await fetch("input your API Key", {
+  const response = await fetch("https://texttospeech.googleapis.com/v1/text:synthesize?key=YOUR_GOOGLE_API_KEY", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
