@@ -1,13 +1,7 @@
-# Front-end Study
-
-제 학습용 저장소입니다.
-
-많은 협업, 장난, 공격을 환영합니다.
-
 
 # 프로젝트 소개
 
-챗 GPT와 TTS 서비스를 연동해 자비스를 구현하고자 하였습니다.
+챗 GPT와 구글 TTS API를 이용해 AI음성인식-AI음성대답 비서 웹사이트를 구축하였습니다.
 
 
 # 기술 스택
@@ -38,8 +32,6 @@ TTS API 연동: 선택한 TTS API를 웹사이트와 연동하고, GPT에서 생
 
 
 # 웹사이트 설명
-
-말한걸 GPT에게 넣어 대답해주는 웹사이트입니다.
 
 음성 인식 API는 구글의 Speech-to-Text API를 사용하였고, TTS API는 구글의 Text-to-Speech API를 사용하였으며, GPT는 OpenAI의 API를 사용하였습니다.
 
